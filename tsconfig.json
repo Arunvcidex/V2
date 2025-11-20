@@ -1,0 +1,108 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "typeRoots": ["node_modules/@types"],
+    "types": ["jquery","node"],
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "ems-asset": [
+        "dist/ems-asset"
+      ],
+      "ems-bsb": [
+        "dist/ems-bsb"
+      ],
+      "ems-crm": [
+        "dist/ems-crm"
+      ],
+      "ems-ecommerce": [
+        "dist/ems-ecommerce"
+      ],
+      "ems-einvoice": [
+        "dist/ems-einvoice"
+      ],
+      "ems-finance": [
+        "dist/ems-finance"
+      ],
+      "ems-hrm": [
+        "dist/ems-hrm"
+      ],
+      "ems-inventory": [
+        "dist/ems-inventory"
+      ],
+      "ems-law": [
+        "dist/ems-law"
+      ],
+      "ems-outlet": [
+        "dist/ems-outlet"
+      ],
+      "ems-payable": [
+        "dist/ems-payable"
+      ],
+      "ems-payroll": [
+        "dist/ems-payroll"
+      ],
+      "ems-pdc": [
+        "dist/ems-pdc"
+      ],
+      "ems-pmr": [
+        "dist/ems-pmr"
+      ],
+      "ems-pmt": [
+        "dist/ems-pmt"
+      ],
+      "ems-rsk": [
+        "dist/ems-rsk"
+      ],
+      "ems-sales": [
+        "dist/ems-sales"
+      ],
+      "ems-sdc": [
+        "dist/ems-sdc"
+      ],
+      "ems-subscription": [
+        "dist/ems-subscription"
+      ],
+      "ems-system": [
+        "dist/ems-system"
+      ],
+      "ems-task": [
+        "dist/ems-task"
+      ],
+      "ems-utilities": [
+        "dist/ems-utilities"
+      ],
+      "ems-wos": [
+        "dist/ems-wos"
+      ]
+    },
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": [
+      "ES2022",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+  
+}

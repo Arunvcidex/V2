@@ -1,0 +1,911 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "storyboard": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/storyboard",
+      "sourceRoot": "projects/storyboard/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/storyboard",
+            "index": "projects/storyboard/src/index.html",
+            "main": "projects/storyboard/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/storyboard/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/storyboard/src/favicon.ico",
+              "projects/storyboard/src/assets"
+            ],
+            "styles": [
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/intl-tel-input/build/css/intlTelInput.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/froala-editor/css/froala_editor.pkgd.min.css",			
+              "node_modules/froala-editor/css/froala_style.min.css",
+              "projects/storyboard/src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net-dt/js/dataTables.dataTables.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "storyboard:build:production"
+            },
+            "development": {
+              "browserTarget": "storyboard:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "storyboard:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/storyboard/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/storyboard/src/favicon.ico",
+              "projects/storyboard/src/assets"
+            ],
+            "styles": [
+              "projects/storyboard/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "ems-utilities": {
+      "projectType": "library",
+      "root": "projects/ems-utilities",
+      "sourceRoot": "projects/ems-utilities/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-utilities/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-utilities/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-utilities/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-utilities/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-system": {
+      "projectType": "library",
+      "root": "projects/ems-system",
+      "sourceRoot": "projects/ems-system/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-system/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-system/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-system/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-system/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-hrm": {
+      "projectType": "library",
+      "root": "projects/ems-hrm",
+      "sourceRoot": "projects/ems-hrm/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-hrm/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-hrm/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-hrm/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-hrm/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-payroll": {
+      "projectType": "library",
+      "root": "projects/ems-payroll",
+      "sourceRoot": "projects/ems-payroll/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-payroll/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-payroll/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-payroll/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-payroll/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-rsk": {
+      "projectType": "library",
+      "root": "projects/ems-rsk",
+      "sourceRoot": "projects/ems-rsk/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-rsk/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-rsk/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-rsk/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-rsk/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-crm": {
+      "projectType": "library",
+      "root": "projects/ems-crm",
+      "sourceRoot": "projects/ems-crm/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-crm/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-crm/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-crm/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-crm/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-pmr": {
+      "projectType": "library",
+      "root": "projects/ems-pmr",
+      "sourceRoot": "projects/ems-pmr/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-pmr/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-pmr/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-pmr/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-pmr/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-pdc": {
+      "projectType": "library",
+      "root": "projects/ems-pdc",
+      "sourceRoot": "projects/ems-pdc/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-pdc/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-pdc/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-pdc/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-pdc/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-pmt": {
+      "projectType": "library",
+      "root": "projects/ems-pmt",
+      "sourceRoot": "projects/ems-pmt/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-pmt/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-pmt/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-pmt/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-pmt/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-subscription": {
+      "projectType": "library",
+      "root": "projects/ems-subscription",
+      "sourceRoot": "projects/ems-subscription/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-subscription/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-subscription/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-subscription/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-subscription/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-inventory": {
+      "projectType": "library",
+      "root": "projects/ems-inventory",
+      "sourceRoot": "projects/ems-inventory/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-inventory/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-inventory/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-inventory/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-inventory/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-finance": {
+      "projectType": "library",
+      "root": "projects/ems-finance",
+      "sourceRoot": "projects/ems-finance/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-finance/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-finance/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-finance/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-finance/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-einvoice": {
+      "projectType": "library",
+      "root": "projects/ems-einvoice",
+      "sourceRoot": "projects/ems-einvoice/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-einvoice/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-einvoice/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-einvoice/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-einvoice/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-sales": {
+      "projectType": "library",
+      "root": "projects/ems-sales",
+      "sourceRoot": "projects/ems-sales/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-sales/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-sales/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-sales/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-sales/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-asset": {
+      "projectType": "library",
+      "root": "projects/ems-asset",
+      "sourceRoot": "projects/ems-asset/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-asset/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-asset/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-asset/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-asset/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-payable": {
+      "projectType": "library",
+      "root": "projects/ems-payable",
+      "sourceRoot": "projects/ems-payable/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-payable/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-payable/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-payable/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-payable/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-outlet": {
+      "projectType": "library",
+      "root": "projects/ems-outlet",
+      "sourceRoot": "projects/ems-outlet/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-outlet/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-outlet/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-outlet/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-outlet/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-law": {
+      "projectType": "library",
+      "root": "projects/ems-law",
+      "sourceRoot": "projects/ems-law/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-law/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-law/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-law/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-law/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-task": {
+      "projectType": "library",
+      "root": "projects/ems-task",
+      "sourceRoot": "projects/ems-task/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-task/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-task/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-task/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-task/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-wos": {
+      "projectType": "library",
+      "root": "projects/ems-wos",
+      "sourceRoot": "projects/ems-wos/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-wos/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-wos/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-wos/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-wos/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-sdc": {
+      "projectType": "library",
+      "root": "projects/ems-sdc",
+      "sourceRoot": "projects/ems-sdc/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-sdc/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-sdc/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-sdc/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-sdc/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-bsb": {
+      "projectType": "library",
+      "root": "projects/ems-bsb",
+      "sourceRoot": "projects/ems-bsb/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-bsb/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-bsb/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-bsb/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-bsb/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ems-ecommerce": {
+      "projectType": "library",
+      "root": "projects/ems-ecommerce",
+      "sourceRoot": "projects/ems-ecommerce/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ems-ecommerce/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ems-ecommerce/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ems-ecommerce/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ems-ecommerce/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "layout": {
+      "projectType": "library",
+      "root": "projects/layout",
+      "sourceRoot": "projects/layout/src",
+      "prefix": "ems",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/layout/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/layout/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/layout/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/layout/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}
